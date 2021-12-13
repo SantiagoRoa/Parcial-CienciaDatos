@@ -6,15 +6,44 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./../static/css/style.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src='main.js'></script>
 </head>
 
 <body>
-    {% for table in tables %}
-    {{titles[loop.index]}}
-    {{ table|safe }}
-    {% endfor %}
+    <div class="header">
+        <h1>Universidad Distrital F.J.C</h1>
+        <h3>Ciencia de Datos -  RETO #1</h3>
+        <span>Nelson Santigo Roa Garzon</span>
+        <span>Christian Isaac gamboa Restrepo</span>
+    </div>
+    <div class="filter-container">
+        <form action="/prueba/" method="post" class="item-filter">
+            <label for="numRes">Numero de Resolucion:</label>
+            <input type="text" id="numRes" name="numRes">
+            <button class="btn" type="submit">Filtrar</button>
+        </form>
+        <form action="/pruebaB/" method="post" class="item-filter">
+            <label for="territorio">Territorio</label>
+            <input type="text" id="territorio" name="territorio">
+            <button class="btn" type="submit">Filtrar</button>
+        </form>
+        <form action="/pruebaC/" method="post" class="item-filter">
+            <label for="numRes">Laboratorio:</label>
+            <input type="text" id="lab" name="lab">
+            <button class="btn" type="submit">Filtrar</button>
+        </form>
+    </div>
+    <div class="table-container">
+        {% for table in tables %}
+        {{titles[loop.index]}}
+        {{ table|safe }}
+        {% endfor %}
+    </div>
+
 </body>
 
 </html>
