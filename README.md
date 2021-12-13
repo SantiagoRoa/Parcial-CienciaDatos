@@ -1,4 +1,5 @@
-# Parcial-CienciaDatos
+# Parcial #1 Introducción a la Ciencia de Datos en Ingeniería de Sistemas
+### Universidad Distrital Francisco José de Caldas
 
 ## Miembros del equipo
 - Nelson Santiago Roa Garzón - 20172020099 
