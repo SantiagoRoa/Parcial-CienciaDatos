@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask import url_for
 from flask import render_template
 import pandas as pd
@@ -9,9 +9,8 @@ client = Socrata("www.datos.gov.co", None)
 results = client.get("sdvb-4x4j", limit=2000)
 df = pd.DataFrame.from_records(results)
 
-tablaOriginal = df.rename(columns={'num_resolucion': 'Número de resolución', 'fecha_resolucion': 'Fecha de resolución'
-, 'a_o':'Año', 'cod_territorio':'Código de territorio', 'nom_territorio':'Departamento', 'laboratorio_vacuna':'Laboratorio', 'cantidad':'Dosis aplicadas'
-, 'uso_vacuna':'Población vacunada', 'fecha_corte':'Fecha de registro'})
+tablaOriginal = df.rename(columns={'num_resolucion': 'Número de resolución', 'fecha_resolucion': 'Fecha de resolución', 'a_o': 'Año', 'cod_territorio': 'Código de territorio',
+                          'nom_territorio': 'Departamento', 'laboratorio_vacuna': 'Laboratorio', 'cantidad': 'Dosis aplicadas', 'uso_vacuna': 'Población vacunada', 'fecha_corte': 'Fecha de registro'})
 
 app = Flask(__name__)
 
@@ -20,11 +19,15 @@ app = Flask(__name__)
 def index():
     return render_template('index.html', tables=[tablaOriginal.to_html(classes='data')], titles=tablaOriginal.columns.values)
 
+@app.route("/")
+def limpiarFiltros():
+    return render_template('index.html', tables=[tablaOriginal.to_html(classes='data')], titles=tablaOriginal.columns.values)
 
-def html_table():
-    return render_template('index.html')
+@app.route("/",methods=["GET", "POST"])
+def filtrar():
+    if request.method == "POST":
+        param = request.form.get("")
+        value = request.form.get("")
+        tablaFiltrada = tablaOriginal[tablaOriginal[param] == value]
+    return render_template('index.html', tables=[tablaFiltrada.to_html(classes='data')], titles=tablaFiltrada.columns.values)
 
-
-def filtrar(param, value):
-    tablaFiltrada = df[df[param] == value]
-    return render_template('index.html', result=tablaFiltrada)
