@@ -19,15 +19,16 @@ app = Flask(__name__)
 def index():
     return render_template('index.html', tables=[tablaOriginal.to_html(classes='data')], titles=tablaOriginal.columns.values)
 
-@app.route("/")
-def limpiarFiltros():
-    return render_template('index.html', tables=[tablaOriginal.to_html(classes='data')], titles=tablaOriginal.columns.values)
 
-@app.route("/",methods=["GET", "POST"])
-def filtrar():
+@app.route("/", methods=["GET", "POST"])
+def pressButton():
     if request.method == "POST":
-        param = request.form.get("")
-        value = request.form.get("")
-        tablaFiltrada = tablaOriginal[tablaOriginal[param] == value]
-    return render_template('index.html', tables=[tablaFiltrada.to_html(classes='data')], titles=tablaFiltrada.columns.values)
-
+        if request.form.get("buttonB") == "clean":
+            return render_template('index.html', tables=[tablaOriginal.to_html(classes='data')], titles=tablaOriginal.columns.values)
+        elif request.form.get("buttonA") == "filter":
+            param = request.form["param"]
+            value = request.form.get("valor")
+            tablaFiltrada = tablaOriginal[tablaOriginal[param] == value]
+            return render_template('index.html', tables=[tablaFiltrada.to_html(classes='data')], titles=tablaFiltrada.columns.values)
+        else:
+            pass

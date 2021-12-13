@@ -10,23 +10,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <script src='main.js'></script>
 </head>
 
 <body>
     <div class="header">
         <h1>Universidad Distrital F.J.C</h1>
         <h3>Ciencia de Datos - RETO #1</h3>
-        <span>Nelson Santigo Roa Garzon</span>
-        <span>Christian Isaac gamboa Restrepo</span>
+        <span>Nelson Santigo Roa Garzon - 20172020099</span>
+        <span>Christian Isaac gamboa Restrepo - 20172020076</span>
     </div>
     <div class="filter-container">
         <form action="/" method="post">
             <div class="item-filter">
-                <input type="text" id="res" name="res">
+                <input type="text" id="res" name="valor">
             </div>
             <div class="item-filter">
-                <input type="radio" id="numRes" name="param" value="numRes">
+                <input type="radio" id="numRes" name="param" value="Número de resolución">
                 <label for="numRes">Número de resolución</label>
 
 
@@ -38,12 +37,9 @@
                 <label for="Departamento">Departamento</label>
             </div>
             <div class="item-filter">
-                <button type="submit" class="btn">Filtrar</button>
+                <button type="submit" class="btn" name= "buttonA" value="filter">Filtrar</button>
+                <button type="submit" class="btn" name = "buttonB" value="clean">Limpiar filtros</button>
             </div>
-            <div class="item-filter">
-                <button type="submit" class="btn">limpiar</button>
-            </div>
-
         </form>
 
     </div>
