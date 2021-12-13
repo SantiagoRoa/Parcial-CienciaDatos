@@ -26,7 +26,5 @@ def html_table():
 
 
 def filtrar(param, value):
-    param = 'num_resolucion'
-    value = '555'
     tablaFiltrada = df[df[param] == value]
     return render_template('index.html', result=tablaFiltrada)
