@@ -29,16 +29,16 @@ body {
   border-radius: 30px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
 .filter-container .item-filter {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  height: 100px;
+  justify-content: center;
+  
 }
 
 .table-container {

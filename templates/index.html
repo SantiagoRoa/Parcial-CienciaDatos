@@ -16,26 +16,36 @@
 <body>
     <div class="header">
         <h1>Universidad Distrital F.J.C</h1>
-        <h3>Ciencia de Datos -  RETO #1</h3>
+        <h3>Ciencia de Datos - RETO #1</h3>
         <span>Nelson Santigo Roa Garzon</span>
         <span>Christian Isaac gamboa Restrepo</span>
     </div>
     <div class="filter-container">
-        <form action="/" method="post" class="item-filter">
-            <label for="numRes">Numero de Resolucion:</label>
-            <input type="text" id="numRes" name="numRes">
-            <button class="btn" type="submit">Filtrar</button>
+        <form action="/" method="post">
+            <div class="item-filter">
+                <input type="text" id="res" name="res">
+            </div>
+            <div class="item-filter">
+                <input type="radio" id="numRes" name="param" value="numRes">
+                <label for="numRes">Número de resolución</label>
+
+
+                <input type="radio" id="lab" name="param" value="Laboratorio">
+                <label for="lab">Laboratorio</label>
+
+
+                <input type="radio" id="Departamento" name="param" value="Departamento">
+                <label for="Departamento">Departamento</label>
+            </div>
+            <div class="item-filter">
+                <button type="submit" class="btn">Filtrar</button>
+            </div>
+            <div class="item-filter">
+                <button type="submit" class="btn">limpiar</button>
+            </div>
+
         </form>
-        <form action="/" method="post" class="item-filter">
-            <label for="territorio">Territorio</label>
-            <input type="text" id="territorio" name="territorio">
-            <button class="btn" type="submit">Filtrar</button>
-        </form>
-        <form action="/" method="post" class="item-filter">
-            <label for="valor">Laboratorio:</label>
-            <input type="text" id="lab" name="lab">
-            <button class="btn" type="submit">Filtrar</button>
-        </form>
+
     </div>
     <div class="table-container">
         {% for table in tables %}
